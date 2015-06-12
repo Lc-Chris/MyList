@@ -129,6 +129,7 @@ template <class T>
 void MyList<T>::insert(int index, const T &item)  
 {
 	try{
+		if (index<0) index+=size;
 		if (index<0 || index>size) throw(0.0);
 		++size;
 		if (size>_size) double_space();
@@ -166,6 +167,7 @@ template <class T>
 T MyList<T>::get_item(int index)
 {
 	try{
+		if (index<0) index+=size;
 		if (index<0||index>=size) throw(0.0);
 		return a[index];
 	}
@@ -250,6 +252,7 @@ template <class T>
 T & MyList<T>::operator[](int index)
 {
 	try{
+		if (index<0) index+=size;
 		if (index<0||index>=size) throw(0.0);
 		return a[index];
 	}
@@ -315,7 +318,7 @@ int main(){
 	a += 12; // a = [15, 4, 2, 1, 0, 12]
 	for (i=0; i<a.get_size(); ++i)
 		cout<<a[i]<<endl;
-    b = a.get_item(4, -3); // b = [] *Èôstart > end£¬·µ»Ø¿ÕÊý×é
+    b = a.get_item(4, -3); // b = [] *ÃˆÃ´start > endÂ£Â¬Â·ÂµÂ»Ã˜Â¿Ã•ÃŠÃ½Ã—Ã©
 	b = a.get_item(3, -1); // b = [1, 0, 12] 
 	a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]
 	for (i=0; i<a.get_size(); ++i)
